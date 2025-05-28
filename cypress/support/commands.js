@@ -13,6 +13,7 @@ Cypress.Commands.add('novoCliente', () => {
     let email = faker.internet.email(nome)
     let endereco = 'QNL 11 Bloco D'
     let cidade = 'Taguatinga Norte'
+    //let uf = "Distrito Federal"
     let cep = '01010-000'
     let telefone = '11 98765-4321'
     let senha = '123456'
@@ -21,7 +22,7 @@ Cypress.Commands.add('novoCliente', () => {
     cy.get('#billing_last_name').type(sobrenome)
     cy.get('#billing_address_1').type(endereco)
     cy.get('#billing_city').type(cidade)
-    // cy.get('#select2-billing_state-container').select('Distrito Federal')
+    //cy.get('#select2-billing_state-container').select('uf')
     cy.get('#billing_postcode').type(cep)
     cy.get('#billing_phone').type(telefone)
     cy.get('#billing_email').type(email)

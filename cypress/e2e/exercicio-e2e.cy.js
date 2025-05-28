@@ -4,8 +4,7 @@ import produtosPage from "../support/page_objects/produtos.page";
 
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
-    /*  Como cliente 
-        Quero acessar a Loja EBAC 
+    /*  Como cliente, quero acessar a Loja EBAC 
         Para fazer um pedido de 4 produtos 
         Fazendo a escolha dos produtos
         Adicionando ao carrinho
@@ -16,21 +15,22 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.visit('/')
         cy.get('#primary-menu > .menu-item-629 > a').click()
     });
+    
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
 
 
-        //1º produto
+        //1º produto a ser adicionado
         produtosPage.buscarProdutoLista('Ariel Roll Sleeve Sweatshirt')
         produtosPage.adicionarProdutoCarrinho('XS', 'Green', 2)
-        //cy.get('.woocommerce-message').should('contain', 2 + ' × “' + 'Ariel Roll Sleeve Sweatshirt' + '”')
+        cy.get('.woocommerce-message').should('contain', 2 + ' × “' + 'Ariel Roll Sleeve Sweatshirt' + '”')
 
-        //2º produto
+        //2º produto a ser adicionado
         produtosPage.buscarProdutoPeloNome('Taurus Elements Shell')
         produtosPage.adicionarProdutoCarrinho('M', 'White', 3)
         //cy.get('.woocommerce-message').should('contain', 3 + ' × “' + 'Taurus Elements Shell' + '”')
 
-        //3º produto
+        //3º produto a ser adicionado
         cy.fixture('produtos').then(dados => {
             let posicaolista = 0
             produtosPage.buscarProdutoPeloNome(dados[posicaolista].nomeProduto)
@@ -41,7 +41,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             //cy.get('.woocommerce-message').should('contain', dados[posicaolista].nomeProduto)
         })
 
-        //4º produto
+        //4º produto a ser adicionado
         produtosPage.BuscarProdutoUrl('Zeppelin Yoga Pant')
         produtosPage.adicionarProdutoCarrinho('34', 'Green', 2)
         //  cy.get('.woocommerce-message').should('exist')
@@ -61,11 +61,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         //Finalizar compra
         cy.get('#place_order').click()
-
-
-
+        cy.get('.breadcrumb').should('exist')
 
     });
-
 
 })
