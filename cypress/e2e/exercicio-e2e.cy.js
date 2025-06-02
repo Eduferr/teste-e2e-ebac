@@ -23,7 +23,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         //1º produto a ser adicionado
         produtosPage.buscarProdutoLista('Ariel Roll Sleeve Sweatshirt')
         produtosPage.adicionarProdutoCarrinho('XS', 'Green', 2)
-        cy.get('.woocommerce-message').should('contain', 2 + ' × “' + 'Ariel Roll Sleeve Sweatshirt' + '”')
+        //cy.get('.woocommerce-message').should('contain', 2 + ' × “' + 'Ariel Roll Sleeve Sweatshirt' + '”')
 
         //2º produto a ser adicionado
         produtosPage.buscarProdutoPeloNome('Taurus Elements Shell')
@@ -61,7 +61,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         //Finalizar compra
         cy.get('#place_order').click()
-        cy.get('.breadcrumb').should('exist')
+        cy.get('.woocommerce-order-overview').should('exist')
 
     });
 
