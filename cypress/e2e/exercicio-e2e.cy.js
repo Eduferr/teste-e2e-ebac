@@ -22,12 +22,12 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         //1º produto a ser adicionado
         produtosPage.buscarProdutoLista('Ariel Roll Sleeve Sweatshirt')
-        produtosPage.adicionarProdutoCarrinho('XS', 'Green', 2)
+        produtosPage.adicionarProdutoCarrinho('XL', 'Red', 2)
         //cy.get('.woocommerce-message').should('contain', 2 + ' × “' + 'Ariel Roll Sleeve Sweatshirt' + '”')
 
         //2º produto a ser adicionado
         produtosPage.buscarProdutoPeloNome('Taurus Elements Shell')
-        produtosPage.adicionarProdutoCarrinho('M', 'White', 3)
+        produtosPage.adicionarProdutoCarrinho('M', 'Yellow', 3)
         //cy.get('.woocommerce-message').should('contain', 3 + ' × “' + 'Taurus Elements Shell' + '”')
 
         //3º produto a ser adicionado
@@ -43,7 +43,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         //4º produto a ser adicionado
         produtosPage.BuscarProdutoUrl('Zeppelin Yoga Pant')
-        produtosPage.adicionarProdutoCarrinho('34', 'Green', 2)
+        produtosPage.adicionarProdutoCarrinho('34', 'Red', 2)
         //  cy.get('.woocommerce-message').should('exist')
 
         //Verificando Carrinho

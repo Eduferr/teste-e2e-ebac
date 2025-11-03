@@ -4,13 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run",
+    "cy:run-junit": "npx cypress run --reporter junit",
+    "cy:dashboard": "",
+    "cy:report": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^9.8.0",
-    "cypress": "^13.6.0"
+    "cypress": "^13.6.0",
+    "mochawesome": "^7.1.4"
   }
 }
