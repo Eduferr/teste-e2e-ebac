@@ -5,8 +5,8 @@ module.exports = defineConfig({
   e2e: {
 
     baseUrl: "http://lojaebac.ebaconline.art.br/",
-    //reporter: "junit",
-    reporter: 'mochawesome',
+    reporter: "junit",
+   // reporter: 'mochawesome',
     
     setupNodeEvents(on, config) {
       // implement node event listeners here
