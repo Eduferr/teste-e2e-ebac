@@ -1,21 +1,30 @@
 trigger:
-- azure
+  branches:
+    include:
+      - azure   # ou o nome do branch que você quer disparar o pipeline
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: NodeTool@0
-  displayName: "Setup"
+  displayName: 'Configura Node.js'
   inputs:
-    versionSpec: '12.x'
-- script: 'npm install'
-  displayName: "Instala dependências"
-- script: "npm run cy:run-junit"
-  displayName: "Executa os testes"
+    versionSpec: '20.x'   # versão mais atual; ajuste se seu projeto exigir outra
+
+- script: npm ci
+  displayName: 'Instala dependências'
+  # se você não tiver package-lock.json, troque para: npm install
+
+- script: npm run cy:run-junit
+  displayName: 'Executa os testes Cypress'
+  continueOnError: true   # garante que a próxima task rode mesmo se os testes falharem
+
 - task: PublishTestResults@2
-  displayName: "Resultado dos testes"
+  displayName: 'Publica resultados dos testes'
+  condition: succeededOrFailed()   # publica o relatório mesmo se os testes quebrarem
   inputs:
     testResultsFormat: 'JUnit'
-    testResultsFiles: '**/*.xml'
-
+    testResultsFiles: '**/test-results.xml'   # ajuste para o caminho real do seu .xml
+    testRunTitle: 'Cypress - JUnit'
+    failTaskOnFailedTests: true
